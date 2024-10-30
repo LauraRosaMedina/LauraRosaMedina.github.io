@@ -228,36 +228,38 @@
 
   <script>
     // Carrusel de fotos
-    let indice = 0;
-    const fotos = document.querySelectorAll('.carrusel img');
-    const musica = document.getElementById('musica');
+  let indice = 0;
+  const fotos = document.querySelectorAll('.carrusel img');
+  const musica = document.getElementById('musica');
 
-    function mostrarFoto() {
-      fotos.forEach((foto, i) => {
-        foto.classList.remove('active');
-        if (i === indice) {
-          foto.classList.add('active');
-        }
-      });
-    }
+  console.log(fotos.length); // Verifica cuántas imágenes se están cargando
 
-    function cambiarFoto(direccion) {
-      indice += direccion;
-      if (indice < 0) {
-        indice = fotos.length - 1;
-      } else if (indice >= fotos.length) {
-        indice = 0;
+  function mostrarFoto() {
+    fotos.forEach((foto, i) => {
+      foto.classList.remove('active');
+      if (i === indice) {
+        foto.classList.add('active');
       }
-      mostrarFoto();
+    });
+  }
+
+  function cambiarFoto(direccion) {
+    indice += direccion;
+    if (indice < 0) {
+      indice = fotos.length - 1;
+    } else if (indice >= fotos.length) {
+      indice = 0;
     }
+    mostrarFoto();
+  }
 
-    // Iniciar la música
-    musica.play();
+  // Iniciar la música
+  musica.play();
 
-    // Cambiar foto cada 5 segundos
-    setInterval(() => {
-      cambiarFoto(1);
-    }, 5000);
+  // Cambiar foto cada 5 segundos
+  setInterval(() => {
+    cambiarFoto(1);
+  }, 5000);
 
     // Cambiar de la calabaza al carrusel después de 2 segundos
     setTimeout(() => {
